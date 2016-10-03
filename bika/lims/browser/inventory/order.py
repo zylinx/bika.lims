@@ -259,6 +259,7 @@ class OrderStore(BrowserView):
             if 'StorageInventory_uid' in request.form:
                 if isinstance(request.form['StorageInventory_uid'], list):
                     uid = request.form['StorageInventory_uid'][index]
+                    index += 1
                 else:
                     uid = request.form['StorageInventory_uid']
 
@@ -281,6 +282,7 @@ class OrderStore(BrowserView):
                     continue
 
                 message = ''
+
                 if number > len(stockitems):
                     message = _('Number entered for ' + product_name + ' is invalid.')
 
