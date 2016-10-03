@@ -336,12 +336,11 @@ class AddManagedStorage(Storage):
         YAxis = form.get('managed_y', 0)
 
         storages = []
-        hierarchy = self.context.getHierarchy()
         for x in self.get_sequence(start, nr_items):
             storage = api.content.create(
                 container=self.context,
                 type="ManagedStorage",
-                id=hierarchy + '.' + idtemplate.format(id=x),
+                id=idtemplate.format(id=x),
                 title=titletemplate.format(id=x),
                 XAxis=int(XAxis),
                 YAxis=int(YAxis)
