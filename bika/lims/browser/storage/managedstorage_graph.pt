@@ -22,8 +22,10 @@
                     posInfoElement.removeClass("hidden");
                     $("span.position-info").html(d["address"]);
                     var portalType = d["portal_type"];
+                    var subjectID = "<tr><td> Subject ID </td>" +
+                                    "<td>" + d['subject'] +"</td><tr>";
                     var volumeHTML = "<tr><td> Volume </td>" +
-                                     "<td>" + d['volume'] + "</td><tr>";
+                                     "<td>" + d['volume'] + d['unit'] +"</td><tr>";
                     var html = "<table class='pos-info'>" +
                     "<tbody>" +
                     "<tr><td>"+ portalType +" ID </td>" +
@@ -32,11 +34,8 @@
                     "<td>" + d["name"] + "</td><tr>";
 
                     if(portalType === "Aliquot" || portalType === "Biospecimen"){
+                        html += subjectID;
                         html += volumeHTML;
-                    }
-                    if(portalType === 'Biospecimen'){
-                    html += "<tr><td> Subject ID </td>" +
-                    "<td>" + d['subject'] + "</td><tr>";
                     }
                     html +=  "</tbody></table>";
 

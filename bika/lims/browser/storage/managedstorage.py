@@ -143,10 +143,15 @@ class PositionsInfo:
                 pos = position.absolute_url_path()
                 aid = item.getId()
                 name = item.Title()
-                if item.portal_type == 'Biospecimen' or item.portal_type == 'Aliquot':
+                if item.portal_type == 'Biospecimen':
                     volume = item.getVolume()
                     unit = item.getUnit()
                     subject = item.getSubjectID() and item.getSubjectID() or ''
+                elif item.portal_type == 'Aliquot':
+                    volume = item.getVolume()
+                    unit = item.getUnit()
+                    subject = item.getBiospecimen().getSubjectID() and \
+                              item.getBiospecimen().getSubjectID() or ''
 
             state = workflow.getInfoFor(position, 'review_state')
             portal_type = position.getStoredItem() and position.getStoredItem().portal_type or ''
