@@ -783,7 +783,7 @@ class BikaListingView(BrowserView):
         '...Water...'
         """
 
-        #self.contentsMethod = self.context.getFolderContents
+        # self.contentsMethod = self.context.getFolderContents
         if not hasattr(self, 'contentsMethod'):
             self.contentsMethod = getToolByName(self.context, self.catalog)
 
