@@ -184,7 +184,7 @@ class Client(Organisation):
                         getCurrentState(c, StateFlow.inactive) == InactiveState.active]
         else:
             contacts = self.objectValues('Contact')
-        return contacts;
+        return contacts
 
     def getDecimalMark(self):
         """ Return the decimal mark to be used on reports for this
