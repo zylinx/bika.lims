@@ -1,16 +1,20 @@
 from AccessControl import ClassSecurityInfo
 from zope.interface import implements
+
+from plone.app.folder.folder import ATFolder
+from Products.ATContentTypes.content import schemata
+
 from bika.lims import bikaMessageFactory as _
 from Products.CMFCore.utils import getToolByName
 from bika.lims.interfaces import IProduct
 from bika.lims import config
-from bika.lims.content.bikaschema import BikaSchema
+from bika.lims.content.bikaschema import BikaSchema, BikaFolderSchema
 from decimal import Decimal
 from Products.Archetypes.public import *
 from Products.Archetypes.references import HoldingReference
 from bika.sanbi.browser.widgets import ProductSuppliersWidget
 
-schema = BikaSchema.copy() + Schema((
+schema = BikaFolderSchema.copy() + BikaSchema.copy() + Schema((
     ReferenceField('Category',
         required=1,
         vocabulary='getCategories',
@@ -73,29 +77,6 @@ schema = BikaSchema.copy() + Schema((
             description=_(" Unit for the quantity eg. ml or kg"),
         ),
     ),
-    FileField('FirstAidSOP',
-        schemata="Documents",
-        widget=FileWidget (
-            label = _("First Aid SOP")),
-            description=_("Standard operating procedures for first aid."),
-    ),
-    FileField('DisposalSOP',
-        schemata="Documents",
-        widget=FileWidget (
-            label = _("Disposal SOP")),
-            description=_("Standard operating procedures for disposal of the product."),
-    ),
-    FileField('SpillHandlingSOP',
-        schemata="Documents",
-        widget=FileWidget (
-            label = _("Spill-handling SOP")),
-            description=_("Standard operating procedures for handling spillage of the product."),
-    ),
-    FileField('MaterialSafetyDataSheets',
-        schemata="Documents",
-        widget=FileWidget (
-            label = _("Material Safety Data Sheets")),
-    ),
     ComputedField('CategoryTitle',
         expression="context.getCategory() and context.getCategory().Title() or ''",
         widget=ComputedWidget(visible=False),
@@ -144,8 +125,9 @@ schema = BikaSchema.copy() + Schema((
 schema['description'].schemata = 'default'
 schema['description'].widget.visible = True
 
-class Product(BaseContent):
+class Product(ATFolder):
     security = ClassSecurityInfo()
+    displayContentsTab = False
     implements(IProduct)
     schema = schema
     
@@ -210,4 +192,10 @@ class Product(BaseContent):
     def getSupplierTitle(self):
         return self.aq_parent.Title()
 
+    def getDocuments(self):
+        """Return all the multifile objects related with the product
+        """
+        return self.objectValues('Multifile')
+
+schemata.finalizeATCTSchema(schema, folderish = True, moveDiscussion = False)
 registerType(Product, config.PROJECTNAME)
