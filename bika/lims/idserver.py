@@ -159,6 +159,8 @@ def generateUniqueId(context):
         for d in prefixes:
             if context.portal_type == "Sample":
                 # Special case for Sample IDs
+                if not context.getSampleType():
+                    break
                 prefix = fn_normalize(context.getSampleType().getPrefix())
                 padding = context.bika_setup.getSampleIDPadding()
                 sequence_start = context.bika_setup.getSampleIDSequenceStart()
