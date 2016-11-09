@@ -8,6 +8,7 @@ from plone.portlets.interfaces import IPortletDataProvider
 from Products.CMFPlone import PloneMessageFactory as _
 from zope import schema
 
+
 class IBikaLIMS(Interface):
     """Marker interface that defines a Zope 3 browser layer.
        If you need to register a viewlet only for the
@@ -329,7 +330,8 @@ class ISampleTypes(Interface):
     ""
 
 
-class ISRTemplates(Interface):
+class ISamplingRoundTemplates(Interface):
+
     ""
 
 

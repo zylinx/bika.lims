@@ -16,13 +16,17 @@ from zope.component import getMultiAdapter
 from zope.interface import implements
 from plone.app.layout.globals.interfaces import IViewView
 from bika.lims.utils import to_utf8
+from Products.ATContentTypes.utils import DT2dt
+from datetime import datetime
+
+from bika.lims.browser.referencesample import ReferenceSamplesView
 
 class SupplierInstrumentsView(InstrumentsView):
 
     def __init__(self, context, request):
         super(SupplierInstrumentsView, self).__init__(context, request)
 
-    def folderitems(self):
+    def isItemAllowed(self, obj):
         items = InstrumentsView.folderitems(self)
         uidsup = self.context.UID()
         outitems = []

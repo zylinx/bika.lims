@@ -11,7 +11,7 @@
       permission="bika.lims.ManageSuppliers"
       layer="bika.lims.interfaces.IBikaLIMS"
     />
-    
+
     <browser:page
       for="bika.lims.interfaces.ISupplier"
       name="base_view"
@@ -19,7 +19,7 @@
       permission="bika.lims.ManageSuppliers"
       layer="bika.lims.interfaces.IBikaLIMS"
     />
-    
+
     <browser:page
       for="bika.lims.interfaces.ISupplier"
       name="instruments"
