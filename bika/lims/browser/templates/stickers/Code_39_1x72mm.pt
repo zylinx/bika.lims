@@ -26,7 +26,7 @@
     partnr            python:part.getId().split('-')[1];
     sample            python:part.aq_parent;
     CSID              python:sample.getClientSampleID();
-    Order             python:sample.getAnalysisRequests()[0].getClientOrderNumber();
+    Order             python:sample.getAnalysisRequests() and sample.getAnalysisRequests()[0].getClientOrderNumber() or '';
     Hazardous         python:sample.getSampleType().getHazardous();
     SampleType        python:sample.getSampleType().Title();
     Sampler           python:sample.getSampler();
