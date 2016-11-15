@@ -78,7 +78,7 @@ def generateUniqueId(context):
         sample_padding = context.bika_setup.getSampleIDPadding()
         ar_padding = context.bika_setup.getARIDPadding()
         sample_id = sample.getId()
-        sample_number = sample_id.split(s_prefix)[1]
+        sample_number = sample_id.split(s_prefix)[0]
         ar_number = sample.getLastARNumber()
         ar_number = ar_number and ar_number + 1 or 1
         return fn_normalize(

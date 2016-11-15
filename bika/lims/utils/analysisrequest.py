@@ -192,6 +192,8 @@ def get_sample_from_values(context, values):
         raise RuntimeError(
             "create_analysisrequest: invalid sample value provided. values=%s" % values)
 
+    return sample
+
 
 def _resolve_items_to_service_uids(items):
     """ Returns a list of service uids without duplicates based on the items

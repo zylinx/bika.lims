@@ -113,7 +113,7 @@ class StockItemsView(BikaListingView):
                          'orderId',
                          'batchId',
                          'product',
-                         'ProductCategory',
+                         'productCategory',
                          'location',
                          'storageLevelId',
                          'isStored',
