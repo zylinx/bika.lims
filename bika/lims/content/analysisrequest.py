@@ -1577,7 +1577,7 @@ class AnalysisRequest(BaseFolder):
     def getClient(self):
         if self.aq_parent.portal_type == 'Client':
             return self.aq_parent
-        if self.aq_parent.portal_type == 'Batch':
+        else:
             return self.aq_parent.getClient()
 
     def getClientPath(self):
