@@ -451,6 +451,9 @@ class ajaxAnalysisRequestSubmit():
                 self.request,
                 state
             )
+            # Todo: How to move this to bika.sanbi
+            field = ar.getField('Project')
+            field.set(ar, self.context)
             ARs.append(ar.Title())
 
         # Display the appropriate message after creation
