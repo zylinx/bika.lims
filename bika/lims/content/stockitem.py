@@ -33,14 +33,6 @@ schema = BikaSchema.copy() + Schema((
         ),
     ),
 
-    # ComputedField('SupplierTitle',
-    #     expression='context.getProduct().getSupplierTitle()',
-    #     widget=ComputedWidget(
-    #         label=_("Supplier"),
-    #         visible={'edit':'hidden', }
-    #     ),
-    # ),
-
     ReferenceField(
         'StorageLocation',
         allowed_types=('UnmanagedStorage','StoragePosition'),

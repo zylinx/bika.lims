@@ -117,6 +117,26 @@ class StorageUnitsView(BikaListingView):
                     'Department',
                     'Address'
                 ]
+            },
+            {
+                'id': 'occupied',
+                'title': _('Occupied'),
+                'contentFilter': {
+                    'inactive_state': 'active',
+                    'portal_type': 'UnmanagedStorage',
+                    'review_state': 'occupied'
+                },
+                'transitions': [
+                    {'id': 'deactivate'}
+                ],
+                'columns': [
+                    'Title',
+                    'Type',
+                    'Description',
+                    'Temperature',
+                    'Department',
+                    'Address'
+                ]
             }
         ]
         return super(StorageUnitsView, self).__call__()

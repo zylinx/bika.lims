@@ -79,10 +79,10 @@ class StoredItemsView(BikaListingView):
             items[x]['ItemID'] = obj.getId()
             items[x]['ItemTitle'] = obj.Title()
             items[x]['ItemType'] = obj.portal_type
-            items[x]['Location'] = obj.getHierarchy()
+            items[x]['Location'] = obj.getStorageLocation().getHierarchy()
             items[x]['replace']['Title'] = \
-                "<a href='%s'>%s</a>" % (items[x]['url'], items[x]['Title'])
-            stitles = [s['title'] for s in obj.getStorageTypes()]
+                "<a href='%s'>%s</a>" % (items[x]['url'], items[x]['ItemTitle'])
+            stitles = [s['title'] for s in obj.getStorageLocation().getStorageTypes()]
             items[x]['StorageTypes'] = ','.join(stitles)
 
         return items
