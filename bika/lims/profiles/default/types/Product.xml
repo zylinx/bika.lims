@@ -57,4 +57,15 @@
     <permission value="Modify portal content"/>
  </action>
 
+ <action title="Storages"
+        action_id="storages"
+        category="object"
+        condition_expr=""
+        icon_expr="string:${portal_url}/images/instrumentcertification.png"
+        url_expr="string:${object_url}/storages"
+        i18n:attributes="title"
+        visible="True">
+    <permission value="Modify portal content"/>
+ </action>
+
 </object>

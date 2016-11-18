@@ -117,4 +117,20 @@
       layer="bika.lims.interfaces.IBikaLIMS"
     />
 
+    <browser:page
+        for="bika.lims.interfaces.IProduct"
+        name="storages"
+        class=".product.ProductStorageView"
+        permission="zope.Public"
+        layer="bika.lims.interfaces.IBikaLIMS"
+    />
+
+    <browser:page
+        for="bika.lims.interfaces.IProduct"
+        name="productqtty"
+        class=".product.ProductQuantityByStorage"
+        permission="zope.Public"
+        layer="bika.lims.interfaces.IBikaLIMS"
+    />
+
 </configure>
