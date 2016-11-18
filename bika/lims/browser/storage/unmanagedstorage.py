@@ -6,6 +6,7 @@ from zope.interface.declarations import implements
 
 from bika.lims import bikaMessageFactory as _
 from bika.lims.browser.bika_listing import BikaListingView
+from bika.lims.controlpanel.bika_products import ProductsView
 
 
 class UnmanagedStorageView(BikaListingView):
@@ -89,3 +90,69 @@ class StoredItemsView(BikaListingView):
 
     def contentsMethod(self, contentFilter):
         return self.context.getBackReferences("ItemStorageLocation")
+
+
+# Todo: Hocine added this class to this file
+class UnmanagedStorageContent(ProductsView):
+    """This class shows the products in this storage and their quantities
+    """
+    def __init__(self, context, request):
+        # StoredItemsView.__init__(self, context, request)
+        ProductsView.__init__(self, context, request)
+        self.context = context
+        self.request = request
+        self.context_actions = {}
+        self.show_sort_column = False
+        self.show_select_row = False
+        self.show_select_column = True
+        self.pagesize = 25
+        self.columns = {
+            'Title': {'title': _('Title'), 'index': 'sortable_title'},
+            'Quantity': {'title': _('Quantity')},
+        }
+        self.review_states = [
+            {
+                'id': 'default',
+                'title': _('Active'),
+                'contentFilter': {'inactive_state': 'active'},
+                'transitions': [],
+                'columns': [
+                    'Title',
+                    'Quantity'
+                ]
+            },
+            {
+                'id': 'all',
+                'title': _('All'),
+                'contentFilter': {'inactive_state': 'active'},
+                'transitions': [],
+                'columns': [
+                    'Title',
+                    'Quantity'
+                ]
+             },
+        ]
+
+    def folderitems(self, full_objects=False):
+        """
+        """
+        # si_items = StoredItemsView.folderitems(self, full_objects=False)
+        items = ProductsView.folderitems(self)
+        stock_items = self.context.getBackReferences("ItemStorageLocation")
+        ret = []
+        for x in range(len(items)):
+            obj = items[x]['obj']
+            quantity = 0
+            for si in stock_items[:]:
+                if si.portal_type == "StockItem":
+                    if obj == si.getProduct():
+                        quantity += 1
+                        stock_items.remove(si)
+                else: continue
+            if quantity > 0:
+                items[x]['replace']['Title'] = "<a href='%s'>%s</a>" % \
+                                        (items[x]['url'], items[x]['Title'])
+                items[x]['Quantity'] = quantity
+                ret.append(items[x])
+
+        return ret

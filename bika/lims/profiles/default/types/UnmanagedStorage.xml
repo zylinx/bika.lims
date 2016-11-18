@@ -51,5 +51,17 @@
          visible="True">
   <permission value="Modify portal content"/>
  </action>
+
+ <action title="Products"
+         action_id="content"
+         category="object"
+         condition_expr=""
+         url_expr="string:${object_url}/content"
+         i18n:attributes="title"
+         i18n:domain="plone"
+         visible="True">
+  <permission value="Modify portal content"/>
+
+ </action>
  
 </object>

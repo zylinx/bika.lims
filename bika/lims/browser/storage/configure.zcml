@@ -90,6 +90,13 @@
     />
 
     <browser:page
+            for="bika.lims.interfaces.IUnmanagedStorage"
+            name="content"
+            class=".unmanagedstorage.UnmanagedStorageContent"
+            permission="zope2.View"
+    />
+
+    <browser:page
             for="bika.lims.interfaces.IManagedStorage"
             name="positions_info"
             class="bika.lims.browser.storage.managedstorage.PositionsInfo"
