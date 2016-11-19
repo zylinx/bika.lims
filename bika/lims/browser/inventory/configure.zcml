@@ -119,7 +119,7 @@
 
     <browser:page
         for="bika.lims.interfaces.IProduct"
-        name="storages"
+        name="base_view"
         class=".product.ProductStorageView"
         permission="zope.Public"
         layer="bika.lims.interfaces.IBikaLIMS"

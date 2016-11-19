@@ -76,12 +76,48 @@
         })(jQuery);
     </script>
 </metal:block>
+<metal:css fill-slot="style_slot">
+    <tal:css>
+        <style type="text/css" media="all">
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            th, td {
+                text-align: left;
+                padding: 8px;
+            }
+            tr:nth-child(even){background-color: #f2f2f2}
+        </style>
+    </tal:css>
+</metal:css>
 </head>
 
 <body>
 <metal:content-title fill-slot="content-title"></metal:content-title>
 <metal:content-description fill-slot="content-description"></metal:content-description>
 <metal:core fill-slot="content-core">
+    <div id="product-info">
+        <table>
+            <tr>
+                <th>ID</th>
+                <td tal:content="python:context.getId()"></td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td tal:content="python:context.Title()"></td>
+            </tr>
+            <tr>
+                <th>Category</th>
+                <td tal:content="python:context.getCategory().Title()"></td>
+            </tr>
+            <tr>
+                <th>Quantity</th>
+                <td tal:content="python:context.getQuantity()"></td>
+            </tr>
+        </table>
+    </div>
     <div id="graph-content-core">
         <br><span style="font-weight: bold;">Available product quantities by storage:</span><br></div>
 </metal:core>

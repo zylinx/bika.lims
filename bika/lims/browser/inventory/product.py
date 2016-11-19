@@ -65,5 +65,4 @@ class ProductQuantityByStorage():
         tmp = sorted(tmp.items(), key=lambda x: x[0])
         for e in tmp:
             ret.append({'title': e[0], 'quantity': e[1]})
-        print ret
         return json.dumps(ret)
