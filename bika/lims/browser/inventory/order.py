@@ -153,7 +153,8 @@ class PrintView(OrderView):
     def __call__(self):
         context = self.context
         self.orderDate = context.getOrderDate()
-        products = context.aq_parent.objectValues('Product')
+        # products = context.aq_parent.objectValues('Product')
+        products = context.get_supplier_products()
         items = context.order_lineitems
         self.items = []
         for item in items:

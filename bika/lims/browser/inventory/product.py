@@ -55,6 +55,7 @@ class ProductQuantityByStorage():
         tmp = {}
         for si in stock_items:
             location = si.getStorageLocation()
+            if not location: continue
             if location.portal_type == 'UnmanagedStorage':
                 hierarchy = location.getHierarchy()
                 self._add_entry_to_dict(tmp, hierarchy)

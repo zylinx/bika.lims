@@ -21,6 +21,8 @@ class ProductsView(BikaListingView):
 
     def __init__(self, context, request):
         super(ProductsView, self).__init__(context, request)
+        self.context = context
+        self.request = request
         self.catalog = 'bika_setup_catalog'
         self.contentFilter = {'portal_type': 'Product',
                               'sort_on': 'sortable_title'}
@@ -34,7 +36,8 @@ class ProductsView(BikaListingView):
         self.show_select_row = False
         self.show_select_column = True
         self.pagesize = 25
-        self.request.set('disable_border', 1)
+        if self.context.portal_type == 'Products':
+            self.request.set('disable_border', 1)
 
         self.columns = {
             'Title': {'title': _('Title'),
