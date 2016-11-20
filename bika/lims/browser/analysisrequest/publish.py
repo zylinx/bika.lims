@@ -767,7 +767,7 @@ class AnalysisRequestPublishView(BrowserView):
         if not ars or len(ars) != 1:
             return []
 
-        ar = ars[0].getObject();
+        ar = ars[0].getObject()
         wf = getToolByName(ar, 'portal_workflow')
         allowed_states = ['verified', 'published']
         # Publish/Republish allowed?

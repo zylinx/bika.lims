@@ -262,7 +262,7 @@ class OrderPublishView(BrowserView):
         if not pros or len(pros) != 1:
             return []
 
-        pro = pros[0].getObject();
+        pro = pros[0].getObject()
         
         # HTML written to debug file
         debug_mode = App.config.getConfiguration().debug_mode

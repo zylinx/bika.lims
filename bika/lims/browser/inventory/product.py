@@ -40,6 +40,7 @@ class ProductQuantityByStorage():
     def __init__(self, context, request):
         self.context = context
         self.request = request
+
     @staticmethod
     def _add_entry_to_dict(d, key):
         if key in d:
