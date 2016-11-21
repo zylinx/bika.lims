@@ -436,7 +436,6 @@ class BikaListingView(BrowserView):
         # get state_id from (request or default_review_states)
         key = "%s_review_state" % self.form_id
         state_id = self.request.form.get(key, self.default_review_state)
-
         states = [r for r in self.review_states if r['id'] == state_id]
         if not states:
             logger.error("%s.review_states does not contains id='%s'." %
@@ -1086,7 +1085,6 @@ class BikaListingView(BrowserView):
 
         for a,action in enumerate(actions):
             actions[a]['title'] = t(PMF(actions[a]['id'] + "_transition_title"))
-
         return actions
 
     def getPriorityIcon(self):

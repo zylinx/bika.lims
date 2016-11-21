@@ -107,7 +107,8 @@ class StorageUnitsView(BikaListingView):
                     'portal_type': 'UnmanagedStorage'
                 },
                 'transitions': [
-                    {'id': 'deactivate'}
+                    {'id': 'deactivate'},
+                    {'id': 'occupy'}
                 ],
                 'columns': [
                     'Title',
@@ -127,7 +128,8 @@ class StorageUnitsView(BikaListingView):
                     'review_state': 'occupied'
                 },
                 'transitions': [
-                    {'id': 'deactivate'}
+                    {'id': 'deactivate'},
+                    {'id': 'liberate'}
                 ],
                 'columns': [
                     'Title',
