@@ -140,6 +140,8 @@ class DashboardView(BrowserView):
                         cancellation_state=['active',],
                         created=self.base_date_range))
 
+        # Todo: Hocine commented the following lines
+        '''
         # Analysis Requests awaiting to be sampled or scheduled
         review_state = ['to_be_sampled',]
         ars = len(bc(portal_type="AnalysisRequest",
@@ -189,7 +191,7 @@ class DashboardView(BrowserView):
                     'number':       ars,
                     'total':        numars,
                     'legend':       _('of') + " " + str(numars) + ' (' + ratio +'%)',
-                    'link':          self.portal_url + '/samples?samples_review_state=to_be_sampled'})
+                    'link':          self.portal_url + '/samples?samples_review_state=to_be_sampled'})'''
 
         # Analysis Requests awaiting for reception
         review_state = ['sample_due',]
