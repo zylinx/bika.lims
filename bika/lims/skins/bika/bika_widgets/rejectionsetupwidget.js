@@ -22,7 +22,8 @@ function hide_show_options() {
 }
 function rejectionwidget_loadEventHandlers() {
     // Append an option div at the end of the options set
-    $("input[id$='_more']").click(function(i,e){
+    // Hocine I modified it from _more to _more1
+    $("input[id$='_more1']").click(function(i,e){
         var fieldname = $(this).attr("id").split("_")[0];
         var optionsset = $('div.options-set');
         var all_optionset = $('div.option-set');
