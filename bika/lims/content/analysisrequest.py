@@ -265,7 +265,7 @@ schema = BikaSchema.copy() + Schema((
                      },
             catalog_name='bika_catalog',
             base_query={'cancellation_state': 'active',
-                        'review_state': ['sample_due', 'sample_received', ]},
+                        'review_state': ['sample_due', 'sample_received']},
             showOn=True,
         ),
     ),
