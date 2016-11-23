@@ -187,7 +187,7 @@ def generateUniqueId(context):
         # no prefix; use portal_type
         # no year inserted here
         # use "IID" normalizer, because we want portal_type to be lowercased.
-        prefix = id_normalize(context.portal_type);
+        prefix = id_normalize(context.portal_type)
         new_id = next_id(prefix)
         return ('%s' + separator + '%s') % (prefix, new_id)
 
