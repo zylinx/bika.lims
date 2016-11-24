@@ -81,8 +81,13 @@ def generateUniqueId(context):
         sample_number = sample_id.split(s_prefix)[0]
         ar_number = sample.getLastARNumber()
         ar_number = ar_number and ar_number + 1 or 1
+        # return fn_normalize(
+        #     ("%s%s" + separator + "R%s") % (s_prefix,
+        #                   str(sample_number).zfill(sample_padding),
+        #                   str(ar_number).zfill(ar_padding))
+        # )
         return fn_normalize(
-            ("%s%s" + separator + "R%s") % (s_prefix,
+            ("%s" + separator + "R%s") % (
                           str(sample_number).zfill(sample_padding),
                           str(ar_number).zfill(ar_padding))
         )
