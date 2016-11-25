@@ -42,14 +42,14 @@ function BikaListingTableView() {
 			url = url.replace('_limit_from=','_olf=');
 			url += '&'+formid+"_limit_from="+limit_from;
 			$('#'+formid+' a.bika_listing_show_more').fadeOut();
-			var tbody = $('table.bika-listing-table[form_id="'+formid+'"] tbody.item-listing-tbody')
+			var tbody = $('table.bika-listing-table[form_id="'+formid+'"] tbody.item-listing-tbody');
 			$.ajax(url)
 				.done(function(data) {
 					try {
 						// We must surround <tr> inside valid TABLE tags before extracting
-						var rows = $('<html><table>'+data+'</table></html>').find('tr')
+						var rows = $('<html><table>'+data+'</table></html>').find('tr[id^="folder-contents-item"]');
 						// Then we can simply append the rows to existing TBODY.
-						$(tbody).append(rows)
+						$(tbody).append(rows);
 						// Increase limit_from so that next iteration uses correct start point
 						$('#'+formid+' a.bika_listing_show_more').attr('data-limitfrom', limit_from+pagesize);
 					}
