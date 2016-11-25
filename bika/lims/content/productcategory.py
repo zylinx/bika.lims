@@ -11,15 +11,15 @@ from bika.lims.interfaces import IProductCategory
 from Products.Archetypes.public import *
 from zope.interface import implements
 
-schema = BikaSchema.copy() + Schema((
-    StringField('Prefix',
-        required=True,
-        widget=StringWidget(
-            label=_("Product Category Prefix"),
-        ),
-    ),
-))
-
+# schema = BikaSchema.copy() + Schema((
+#     StringField('Prefix',
+#         required=True,
+#         widget=StringWidget(
+#             label=_("Product Category Prefix"),
+#         ),
+#     ),
+# ))
+schema = BikaSchema.copy()
 schema['description'].widget.visible = True
 schema['description'].schemata = 'default'
 
