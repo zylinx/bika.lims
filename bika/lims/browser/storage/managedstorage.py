@@ -28,7 +28,8 @@ class ManagedStorageView(BikaListingView):
                     + "managedstorage_big.png"
 
         StoragePositions = StoragePositionsView(self.context, self.request)
-        self.positions_table = StoragePositions.contents_table(table_only=True)
+        # self.positions_table = StoragePositions.contents_table(table_only=True)
+        self.positions_table = StoragePositions.__call__()
 
         StorageGraph = StorageGraphView(self.context, self.request)
         self.graph = StorageGraph()
@@ -102,6 +103,10 @@ class StoragePositionsView(BikaListingView):
         item['review_state'] = 'occupied' if si else 'available'
 
         return item
+
+    def __call__(self):
+        self._process_request()
+        return self.contents_table(table_only=True)
 
 
 class StorageGraphView(BrowserView):

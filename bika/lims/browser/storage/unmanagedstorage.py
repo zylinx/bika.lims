@@ -22,7 +22,7 @@ class UnmanagedStorageView(BikaListingView):
     def __call__(self):
 
         StoredItems = StoredItemsView(self.context, self.request)
-        self.stored_items_table = StoredItems.contents_table(table_only=True)
+        self.stored_items_table = StoredItems.__call__()
 
         return self.template()
 
@@ -58,7 +58,7 @@ class StoredItemsView(BikaListingView):
         self.review_states = [
             {'id': 'default',
              'title': _('Active'),
-             'contentFilter': {'inactive_state': 'active'},
+             'contentFilter': {'review_state': 'available'},
              'transitions': [{'id': 'deactivate'}, ],
              'columns': ['ItemID',
                          'ItemTitle',
@@ -81,8 +81,8 @@ class StoredItemsView(BikaListingView):
             items[x]['ItemTitle'] = obj.Title()
             items[x]['ItemType'] = obj.portal_type
             items[x]['Location'] = obj.getStorageLocation().getHierarchy()
-            items[x]['replace']['Title'] = \
-                "<a href='%s'>%s</a>" % (items[x]['url'], items[x]['ItemTitle'])
+            items[x]['replace']['ItemID'] = \
+                "<a href='%s'>%s</a>" % (items[x]['url'], items[x]['ItemID'])
             stitles = [s['title'] for s in obj.getStorageLocation().getStorageTypes()]
             items[x]['StorageTypes'] = ','.join(stitles)
 
@@ -90,6 +90,10 @@ class StoredItemsView(BikaListingView):
 
     def contentsMethod(self, contentFilter):
         return self.context.getBackReferences("ItemStorageLocation")
+
+    def __call__(self):
+        self._process_request()
+        return self.contents_table(table_only=True)
 
 
 # Todo: Hocine added this class to this file
