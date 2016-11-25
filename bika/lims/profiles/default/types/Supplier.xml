@@ -46,7 +46,7 @@
          url_expr="string:${object_url}/base_view"
          i18n:attributes="title"
          i18n:domain="plone"
-         visible="True">
+         visible="False">
   <permission value="View"/>
  </action>
 
@@ -68,10 +68,10 @@
   <permission value="View"/>
  </action>
 
-<action action_id="products"
+<action action_id="view"
         title="Products"
         category="object"
-        url_expr="string:${object_url}/products"
+        url_expr="string:${object_url}/base_view"
         i18n:attributes="title"
         visible="True">
   <permission value="View"/>
