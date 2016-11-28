@@ -170,7 +170,7 @@ class Storage(BrowserView):
         return getStorageTypes()
 
     def form_error(self, msg):
-        self.context.plone_utils.addPortalMessage(msg)
+        self.context.plone_utils.addPortalMessage(msg, 'error')
         self.request.response.redirect(self.context.absolute_url())
 
 
@@ -184,7 +184,8 @@ class AddStorageUnits(Storage):
 
         try:
             self.validate_form_inputs()
-        except ValidationError:
+        except ValidationError as e:
+            self.form_error(e.message)
             return
 
         units = self.create_units()
@@ -243,12 +244,10 @@ class AddStorageUnits(Storage):
         idtemplate = self.request.form.get('units_idtemplate', None)
         if not (titletemplate and idtemplate):
             msg = u'ID and Title template are both required.'
-            self.form_error(msg)
             raise ValidationError(msg)
         if not ('{id}' in titletemplate and '{id}' in idtemplate):
             msg = u'ID and Title templates must contain {id} for ID sequence ' \
                   u'substitution'
-            self.form_error(msg)
             raise ValidationError(msg)
 
         # check for valid integer values
@@ -256,13 +255,9 @@ class AddStorageUnits(Storage):
             nr_items = int(form['units_nr_items'])
         except:
             msg = u'Item count must be an integer.'
-            self.form_error(msg)
-            self.request.response.redirect(self.context.absolute_url())
             raise ValidationError(msg)
         if nr_items < 1:
             msg = u'Item count must be > 0.'
-            self.form_error(msg)
-            self.request.response.redirect(self.context.absolute_url())
             raise ValidationError(msg)
 
         # Check that none of the IDs conflict with existing items
@@ -270,10 +265,9 @@ class AddStorageUnits(Storage):
         nr_items = int(form['units_nr_items'])
         ids = [x.id for x in self.context.objectValues()]
         for x in self.get_sequence(start, nr_items):
-            if x in ids:
-                msg = u'The ID %s already exists.' % x
-                self.form_error(msg)
-                self.request.response.redirect(self.context.absolute_url())
+            id_unit = idtemplate.format(id=x)
+            if  id_unit in ids:
+                msg = u'The ID %s already exists.' % id_unit
                 raise ValidationError(msg)
 
     def set_inputs_into_schema(
@@ -300,7 +294,8 @@ class AddManagedStorage(Storage):
 
         try:
             self.validate_form_inputs()
-        except ValidationError:
+        except ValidationError as e:
+            self.form_error(e.message)
             return
 
         form = self.request.form
@@ -387,36 +382,28 @@ class AddManagedStorage(Storage):
         idtemplate = form.get('managed_idtemplate', None)
         if not (titletemplate and idtemplate):
             msg = u'ID and Title template are both required.'
-            self.form_error(msg)
             raise ValidationError(msg)
         if not ('{id}' in titletemplate and '{id}' in idtemplate):
             msg = u'ID and Title templates must contain {id} for ID sequence ' \
                   u'substitution'
-            self.form_error(msg)
             raise ValidationError(msg)
 
         # check for valid integer values
         try:
             nr_items = int(form.get('managed_nr_items', None))
-            nr_positions = int(form.get('managed_positions', 0))
             fnrp = form.get('managed_positions', 0)
             if not fnrp:
                 fnrp = 0
             nr_positions = int(fnrp)
         except:
             msg = u'Item and position count must be numbers'
-            self.form_error(msg)
-            self.request.response.redirect(self.context.absolute_url())
             raise ValidationError(msg)
         if nr_items < 1:
             msg = u'Item count must be > 0.'
-            self.form_error(msg)
-            self.request.response.redirect(self.context.absolute_url())
+
             raise ValidationError(msg)
         if nr_positions < 1:
             msg = u'Position count must be > 1.'
-            self.form_error(msg)
-            self.request.response.redirect(self.context.absolute_url())
             raise ValidationError(msg)
 
         # verify storage_type interface selection
@@ -438,10 +425,9 @@ class AddManagedStorage(Storage):
         nr_items = int(form['managed_nr_items'])
         ids = [x.id for x in self.context.objectValues()]
         for x in self.get_sequence(start, nr_items):
-            if x in ids:
-                msg = u'The ID %s already exists.' % x
-                self.form_error(msg)
-                self.request.response.redirect(self.context.absolute_url())
+            id_storage = idtemplate.format(id=x)
+            if id_storage in ids:
+                msg = u'The ID %s already exists.' % id_storage
                 raise ValidationError(msg)
 
     def set_inputs_into_schema(
@@ -455,10 +441,6 @@ class AddManagedStorage(Storage):
         if address and 'Address' in schema:
             instance.Schema()['Address'].set(instance, temperature)
 
-    def form_error(self, msg):
-        self.context.plone_utils.addPortalMessage(msg)
-        self.request.response.redirect(self.context.absolute_url())
-
 
 class AddUnmanagedStorage(Storage):
     def __init__(self, context, request):
@@ -470,7 +452,8 @@ class AddUnmanagedStorage(Storage):
 
         try:
             self.validate_form_inputs()
-        except ValidationError:
+        except ValidationError as e:
+            self.form_error(e.message)
             return
 
         form = self.request.form
@@ -548,7 +531,6 @@ class AddUnmanagedStorage(Storage):
         if not ('{id}' in titletemplate and '{id}' in idtemplate):
             msg = u'ID and Title templates must contain {id} for ID sequence ' \
                   u'substitution'
-            self.form_error(msg)
             raise ValidationError(msg)
 
         # check for valid integer values
@@ -556,25 +538,19 @@ class AddUnmanagedStorage(Storage):
             nr_items = int(self.request.form.get('unmanaged_nr_items', None))
         except:
             msg = u'Item count must be an integer.'
-            self.form_error(msg)
-            self.request.response.redirect(self.context.absolute_url())
             raise ValidationError(msg)
 
         if nr_items < 1:
             msg = u'Item count must be > 0'
-            self.form_error(msg)
-            self.request.response.redirect(self.context.absolute_url())
             raise ValidationError(msg)
 
         # Check that none of the IDs conflict with existing items
-        start = form['unmanaged_start']
+        start = int(form['unmanaged_start'])
         nr_items = int(form['unmanaged_nr_items'])
         ids = [x.id for x in self.context.objectValues()]
         for x in self.get_sequence(start, nr_items):
-            if x in ids:
+            if idtemplate.format(id=x) in ids:
                 msg = u'The ID %s already exists.' % x
-                self.form_error(msg)
-                self.request.response.redirect(self.context.absolute_url())
                 raise ValidationError(msg)
 
         # verify storage_type interface selection
