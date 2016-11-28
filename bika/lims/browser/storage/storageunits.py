@@ -25,7 +25,8 @@ class StorageUnitsView(BikaListingView):
         path = '/'.join(self.context.getPhysicalPath())
         self.contentFilter = {
             'path': {'query': path, 'depth': 1, 'level': 0},
-            'sort_on': 'sortable_title'}
+            'sort_on': 'sortable_title'
+        }
         self.context_actions = {}
         self.title = self.context.Title()
         self.description = ""
@@ -104,6 +105,7 @@ class StorageUnitsView(BikaListingView):
                 'title': _('Unmanaged Storages'),
                 'contentFilter': {
                     'inactive_state': 'active',
+                    'review_state': 'available',
                     'portal_type': 'UnmanagedStorage'
                 },
                 'transitions': [
