@@ -74,21 +74,14 @@ def generateUniqueId(context):
     # Analysis Request IDs
     if context.portal_type == "AnalysisRequest":
         sample = context.getSample()
-        s_prefix = fn_normalize(sample.getSampleType().getPrefix())
-        sample_padding = context.bika_setup.getSampleIDPadding()
         ar_padding = context.bika_setup.getARIDPadding()
         sample_id = sample.getId()
-        sample_number = sample_id.split(s_prefix)[0]
         ar_number = sample.getLastARNumber()
         ar_number = ar_number and ar_number + 1 or 1
-        # return fn_normalize(
-        #     ("%s%s" + separator + "R%s") % (s_prefix,
-        #                   str(sample_number).zfill(sample_padding),
-        #                   str(ar_number).zfill(ar_padding))
-        # )
+
         return fn_normalize(
             ("%s" + separator + "R%s") % (
-                          str(sample_number).zfill(sample_padding),
+                          str(sample_id),
                           str(ar_number).zfill(ar_padding))
         )
 
