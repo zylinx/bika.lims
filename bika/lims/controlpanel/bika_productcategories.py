@@ -33,26 +33,39 @@ class ProductCategoriesView(BikaListingView):
                       'index': 'sortable_title'},
             'Description': {'title': _('Description'),
                             'index': 'description',
-                            'toggle':True},
-            'getPrefix': {'title': _('Prefix'),
-                          'toggle': True},
+                            'toggle':True}
         }
 
         self.review_states = [
-            {'id':'default',
-             'title': _('Active'),
-             'contentFilter': {'inactive_state': 'active'},
-             'transitions': [{'id':'deactivate'}, ],
-             'columns': ['Title', 'Description', 'getPrefix']},
-            {'id':'inactive',
-             'title': _('Dormant'),
-             'contentFilter': {'inactive_state': 'inactive'},
-             'transitions': [{'id':'activate'}, ],
-             'columns': ['Title', 'Description', 'getPrefix']},
-            {'id':'all',
-             'title': _('All'),
-             'contentFilter':{},
-             'columns': ['Title', 'Description', 'getPrefix']},
+            {
+                'id':'default',
+                'title': _('Active'),
+                'contentFilter': {'inactive_state': 'active'},
+                'transitions': [{'id':'deactivate'}, ],
+                'columns': [
+                    'Title',
+                    'Description'
+                ]
+            },
+            {
+                'id':'inactive',
+                'title': _('Dormant'),
+                'contentFilter': {'inactive_state': 'inactive'},
+                'transitions': [{'id':'activate'}, ],
+                'columns': [
+                    'Title',
+                    'Description'
+                ]
+            },
+            {
+                'id':'all',
+                'title': _('All'),
+                'contentFilter':{},
+                'columns': [
+                    'Title',
+                    'Description'
+                ]
+            },
         ]
 
     def folderitems(self):
@@ -62,7 +75,6 @@ class ProductCategoriesView(BikaListingView):
                 continue
             obj = items[x]['obj']
             items[x]['Description'] = obj.Description()
-            items[x]['getPrefix'] = obj.getPrefix()
             items[x]['replace']['Title'] = "<a href='%s'>%s</a>" % \
                (items[x]['url'], items[x]['Title'])
 
