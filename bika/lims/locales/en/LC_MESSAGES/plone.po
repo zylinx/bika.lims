@@ -870,3 +870,7 @@ msgstr "Remove"
 msgid "verify_transition_title"
 msgstr "Verify"
 
+#. Default: "Verify"
+#: ../profiles/default/workflows/bika_analysis_workflow/definition.xml
+msgid "receive_order_transition_title"
+msgstr "Receive Order"
