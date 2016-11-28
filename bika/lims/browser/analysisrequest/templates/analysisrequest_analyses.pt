@@ -15,10 +15,13 @@
     tal:define="
         form_id view/form_id;
         table_only python:hasattr(view, 'table_only') and view.table_only or view.request.get('table_only','') == form_id;"
-    tal:condition="python:not table_only">
-    <h1>
+    tal:condition="python: table_only">
+    <h1 tal:define="field python: context.getField('Project')">
         <img tal:condition="view/icon | nothing"
              src="" tal:attributes="src view/icon"/>
+        <a tal:attributes="href python: field.get(context).absolute_url()">
+            <img tal:attributes="src string:${view/portal_url}/++resource++bika.sanbi.images/project_big.png"/>
+        </a>
         <span style="position:relative;top:-0.2em;" class="documentFirstHeading" tal:content="view/title"/>
         <tal:add_actions repeat="add_item python:view.context_actions.keys()">
             <a tal:attributes="
