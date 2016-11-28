@@ -253,7 +253,6 @@ class Analysis(BaseContent):
 
     def updateDueDate(self):
         # set the max hours allowed
-
         service = self.getService()
         maxtime = service.getMaxTimeAllowed()
         if not maxtime:
@@ -1179,8 +1178,8 @@ class Analysis(BaseContent):
         # DuplicateAnalysis doesn't have analysis_workflow.
         if self.portal_type == "DuplicateAnalysis":
             return
-        if skip(self, "receive"):
-            return
+        # if skip(self, "receive"):
+        #     return
         self.updateDueDate()
         self.reindexObject()
 
