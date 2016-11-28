@@ -177,7 +177,7 @@ class InventoryOrder(BaseFolder):
         transaction.commit()
         raise zExceptions.Redirect(self.absolute_url() + "/publish")
 
-    def workflow_script_receive(self):
+    def workflow_script_receive_order(self):
         """ receive order """
         # products = self.aq_parent.objectValues('Product')
         products = self.get_supplier_products()

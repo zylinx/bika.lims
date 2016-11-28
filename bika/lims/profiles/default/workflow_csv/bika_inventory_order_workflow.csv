@@ -28,7 +28,7 @@ Delete objects,N,N,Y,N,N,N,N,N,Y,Y
 Id:,dispatched,,,,,,,,,
 Title:,Dispatched,,,,,,,,,
 Description:,,,,,,,,,,
-Transitions,receive,,,,,,,,,
+Transitions,receive_order,,,,,,,,,
 Permissions,Acquire,Anonymous,Manager,Owner,Reader,Editor,Contributor,Analyst,LabClerk,LabManager
 Modify portal content,N,N,Y,N,N,N,N,N,Y,Y
 Delete objects,N,N,Y,N,N,N,N,N,Y,Y
@@ -51,7 +51,7 @@ Trigger:,User,,,,,,,,,
 Guard permission:,BIKA: Dispatch Inventory Order,,,,,,,,,
 ,,,,,,,,,,
 [Transition],,,,,,,,,,
-Id:,receive,,,,,,,,,
+Id:,receive_order,,,,,,,,,
 Title:,Receive order,,,,,,,,,
 Description:,Receive order,,,,,,,,,
 Target state:,received,,,,,,,,,
