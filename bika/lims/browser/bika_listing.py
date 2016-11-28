@@ -535,11 +535,12 @@ class BikaListingView(BrowserView):
                    # The column must be manually sorted using python
                    self.manual_sort_on = self.sort_on
             else:
-                # We cannot sort for a column that doesn't exist!
-                msg = "{}: sort_on is '{}', not a valid column".format(
-                    self, self.sort_on)
-                logger.error(msg)
-                self.sort_on = None
+                if not self.sort_on in ['created', 'sortable_title']:
+                    # We cannot sort for a column that doesn't exist!
+                    msg = "{}: sort_on is '{}', not a valid column".format(
+                        self, self.sort_on)
+                    logger.error(msg)
+                    self.sort_on = None
 
         if self.manual_sort_on:
             self.manual_sort_on = self.manual_sort_on[0] \
