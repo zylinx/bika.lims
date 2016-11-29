@@ -70,7 +70,7 @@
          link_target=""
          url_expr="string:${object_url}/not_requested"
          i18n:attributes="title"
-         visible="True">
+         visible="False">
      <permission value="BIKA: Results not requested"/>
  </action>
 

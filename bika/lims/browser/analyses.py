@@ -878,7 +878,7 @@ class QCAnalysesView(AnalysesView):
         self.columns['getReferenceAnalysesGroupID'] = {'title': _('QC Sample ID'),
                                                        'sortable': False}
         self.columns['Worksheet'] = {'title': _('Worksheet'),
-                                                'sortable': False}
+                                     'sortable': False}
         self.review_states[0]['columns'] = ['Service',
                                             'Worksheet',
                                             'getReferenceAnalysesGroupID',
@@ -890,7 +890,6 @@ class QCAnalysesView(AnalysesView):
                                             'CaptureDate',
                                             'DueDate',
                                             'state_title']
-
         qcanalyses = context.getQCAnalyses()
         asuids = [an.UID() for an in qcanalyses]
         self.catalog = 'bika_analysis_catalog'
