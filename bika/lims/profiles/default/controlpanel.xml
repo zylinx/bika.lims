@@ -187,7 +187,7 @@
     appId="bika.lims" category="bika" condition_expr=""
     icon_expr="string:++resource++bika.lims.images/analysisprofile.png"
     url_expr="string:$portal_url/bika_setup/bika_analysisprofiles"
-    visible="True"
+    visible="False"
     i18n:attributes="title">
   <permission>BIKA: Manage Bika</permission>
  </configlet>
@@ -196,7 +196,7 @@
     appId="bika.lims" category="bika" condition_expr=""
     icon_expr="string:++resource++bika.lims.images/artemplate.png"
     url_expr="string:$portal_url/bika_setup/bika_artemplates"
-    visible="True"
+    visible="False"
     i18n:attributes="title">
   <permission>BIKA: Manage Bika</permission>
  </configlet>
@@ -234,7 +234,7 @@
     appId="bika.lims" category="bika" condition_expr=""
     icon_expr="string:++resource++bika.lims.images/referencedefinition.png"
     url_expr="string:$portal_url/bika_setup/bika_referencedefinitions"
-    visible="True"
+    visible="False"
     i18n:attributes="title">
   <permission>BIKA: Manage Bika</permission>
  </configlet>
@@ -243,7 +243,7 @@
     appId="bika.lims" category="bika" condition_expr=""
     icon_expr="string:++resource++bika.lims.images/batchlabel.png"
     url_expr="string:$portal_url/bika_setup/bika_batchlabels"
-    visible="True"
+    visible="False"
     i18n:attributes="title">
   <permission>BIKA: Manage Bika</permission>
  </configlet>
@@ -252,7 +252,7 @@
     appId="bika.lims" category="bika" condition_expr=""
     icon_expr="string:++resource++bika.lims.images/worksheettemplate.png"
     url_expr="string:$portal_url/bika_setup/bika_worksheettemplates"
-    visible="True"
+    visible="False"
     i18n:attributes="title">
   <permission>BIKA: Manage Bika</permission>
  </configlet>
@@ -295,7 +295,7 @@
 
 <configlet title="Products" action_id="bika_products"
     appId="bika.lims" category="bika" condition_expr=""
-    icon_expr="string:++resource++bika.lims.images/category.png"
+    icon_expr="string:++resource++bika.lims.images/product.png"
     url_expr="string:$portal_url/bika_setup/bika_products"
     visible="True"
   i18n:attributes="title">
