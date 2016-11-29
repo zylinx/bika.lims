@@ -110,7 +110,7 @@
         <br/>
 
         <!-- QC Analyses table -->
-        <h3 style="margin-top:1em;">
+        <h3 style="margin-top:1em;" tal:condition="python: False">
             <img title="QC Analyses"
                  tal:attributes="src string:${view/portal_url}/++resource++bika.lims.images/referencesample.png">
             <span i18n:translate="">QC Analyses</span>
