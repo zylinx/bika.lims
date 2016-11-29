@@ -280,7 +280,7 @@ schema = BikaFolderSchema.copy() + Schema((
     BooleanField(
         'ShowPartitions',
         schemata = "Analyses",
-        default = True,
+        default = False,
         widget = BooleanWidget(
             label=_("Display individual sample partitions "),
             description=_("Turn this on if you want to work with sample partitions")
