@@ -7,11 +7,14 @@
 <body>
 
 	<metal:content-title fill-slot="content-title">
-		<h1>
-			<img tal:condition="view/icon | nothing"
+		<h1 tal:define="field python: context.getField('Project')">
+			<a tal:attributes="href python: field.get(context).absolute_url()">
+                <img tal:attributes="src string:${view/portal_url}/++resource++bika.sanbi.images/prev_big.png"/>
+            </a>
+            <img tal:condition="view/icon | nothing"
 				 src="" tal:attributes="src view/icon"/>
-        <img tal:condition="view/getPriorityIcon | nothing"
-             src="" tal:attributes="src view/getPriorityIcon"/>
+            <img tal:condition="view/getPriorityIcon | nothing"
+                 src="" tal:attributes="src view/getPriorityIcon"/>
 			<span class="documentFirstHeading" tal:content="view/title"/>
 		</h1>
 	</metal:content-title>

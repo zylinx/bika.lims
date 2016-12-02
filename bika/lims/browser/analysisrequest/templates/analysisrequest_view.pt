@@ -10,11 +10,11 @@
 
 <metal:content-title fill-slot="content-title">
     <h1 tal:define="field python: context.getField('Project')">
+        <a tal:attributes="href python: field.get(context).absolute_url()">
+            <img tal:attributes="src string:${view/portal_url}/++resource++bika.sanbi.images/prev_big.png"/>
+        </a>
         <img tal:condition="view/icon | nothing"
             src="" tal:attributes="src view/icon"/>
-        <a tal:attributes="href python: field.get(context).absolute_url()">
-            <img tal:attributes="src string:${view/portal_url}/++resource++bika.sanbi.images/project_big.png"/>
-        </a>
         <span class="documentFirstHeading" tal:content="context/id"></span>
         <span class="barcode" tal:attributes="value context/id"></span>
         <img tal:condition="python:context.getSample().getSampleType().getHazardous()"
