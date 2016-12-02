@@ -8,8 +8,8 @@
         <li>
           <a href="https://www.bikalims.org/">
             <img src=""
-                 height="18"
-                 width="76"
+                 height="40"
+                 width="100"
                  alt="BikaLIMS.org - Home of the Bika Open Source LIMS Collective"
                  title="Bika web based Free and Open Source LIMS. For more information visit BikaLIMS.org"
 	             tal:attributes="src string:${portal/absolute_url}/++resource++bika.lims.images/logo_OSLIMSCollective_footer.png"
@@ -31,8 +31,8 @@
     <div class="cell width-full position-0">
 	  <p>
 	  <span i18n:translate="">
-	  Copyright &copy; 2000 - <span i18n:name="current_year" tal:define="now modules/DateTime/DateTime" tal:content="now/year" /> by
-	  <span i18n:name="label_bika"><a href="http://www.bikalabs.com" i18n:translate="">Bika Lab Systems</a></span>
+	  Copyright &copy; <span i18n:name="current_year" tal:define="now modules/DateTime/DateTime" tal:content="now/year" /> by
+	  <span i18n:name="label_bika"><a href="http://www.bikalabs.com" i18n:translate="">SANBI Team</a></span>
 	  </span>
 	  </p>
 	</div>
