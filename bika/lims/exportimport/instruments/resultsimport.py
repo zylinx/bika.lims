@@ -363,7 +363,7 @@ class AnalysisResultsImporter(Logger):
         if len(acodes) == 0:
             self.err("Service keywords: no matches found")
 
-        searchcriteria = self.getIdSearchCriteria();
+        searchcriteria = self.getIdSearchCriteria()
         #self.log(_("Search criterias: %s") % (', '.join(searchcriteria)))
         for objid, results in self._parser.getRawResults().iteritems():
             # Allowed more than one result for the same sample and analysis.

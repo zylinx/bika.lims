@@ -29,6 +29,7 @@ from abaxis.vetscan import vs2
 from scilvet.abc import plus
 from eltra.cs import cs2000
 from rigaku.supermini import wxrf
+from biorad.tc20 import tc20 #Lunga
 from myself import myinstrument
 from nuclisens import easyq
 
@@ -57,6 +58,7 @@ __all__ = ['abaxis.vetscan.vs2',
            'sealanalytical.aq2.aq2',
            'tescan.tima.tima',
            'thermoscientific.multiskan.go',
+           'biorad.tc20.tc20', #Lunga
            'myself.myinstrument',
            'nuclisens.easyq',
            ]
