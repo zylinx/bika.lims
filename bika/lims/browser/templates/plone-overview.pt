@@ -63,7 +63,7 @@
                 <tal:many tal:condition="python:len(sites) &gt; 1">
                 <li>
                     <span id="multiple-sites" i18n:translate="">
-                        You have multiple installations of Bika LIMS:
+                        You have multiple installations of B3A Biobank:
                     </span>
                     <ul>
                         <li tal:repeat="site sites">
