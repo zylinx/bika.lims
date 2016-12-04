@@ -24,6 +24,7 @@ from operator import itemgetter
 
 class InstrumentsView(BikaListingView):
     implements(IFolderContentsView, IViewView)
+
     def __init__(self, context, request):
         super(InstrumentsView, self).__init__(context, request)
         self.catalog = 'bika_setup_catalog'
