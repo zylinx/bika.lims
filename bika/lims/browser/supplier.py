@@ -27,15 +27,8 @@ class SupplierInstrumentsView(InstrumentsView):
         super(SupplierInstrumentsView, self).__init__(context, request)
 
     def isItemAllowed(self, obj):
-        items = InstrumentsView.folderitems(self)
-        uidsup = self.context.UID()
-        outitems = []
-        for x in range(len(items)):
-            obj = items[x].get('obj', None)
-            if obj and hasattr(obj, 'getRawSupplier') \
-               and obj.getRawSupplier() == uidsup:
-                outitems.append(items[x])
-        return outitems
+        supp = obj.getRawSupplier() if obj else None
+        return supp == self.context.UID() if supp else False
 
 
 class SupplierProductsView(ProductsView):
