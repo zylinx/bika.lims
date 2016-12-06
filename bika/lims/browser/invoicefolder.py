@@ -59,6 +59,9 @@ class InvoiceFolderContentsView(BikaListingView):
                 'url': 'createObject?type_name=InvoiceBatch',
                 'icon': '++resource++bika.lims.images/add.png'
             }
+        # Todo Hocine remove this later and override it in bika.sanbi
+        self.context_actions = {}
+
         if mtool.checkPermission(ManageInvoices, self.context):
             self.show_select_column = True
         return super(InvoiceFolderContentsView, self).__call__()
