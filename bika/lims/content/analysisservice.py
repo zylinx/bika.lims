@@ -1186,6 +1186,8 @@ class AnalysisService(BaseContent, HistoryAwareMixin):
             If Instrument Entry of Results is not selected, returns the
             method assigned directly by the user using the _Method Field
         """
+        # if self.title == 'Differential cell count':
+        #     import pdb;pdb.set_trace()
         method = None
         if (self.getInstrumentEntryOfResults() == True):
             method = self.getInstrument().getMethod() \

@@ -5,7 +5,7 @@
 <metal:content-title fill-slot="content-title">
 
     <h1 class="documentFirstHeading" i18n:translate="bika-frontpage-title">
-        B3A Biobank LIMS
+        Bika Biobank LIMS
 
         <tal:version condition="python:'bika.sanbi' not in view.upgrades">
         <span tal:replace="python:view.versions['bika.sanbi']" i18n:name="version"/>
@@ -33,7 +33,7 @@
         <div style="float:left;width:47%;">
             <h2 style="margin-bottom:10px;border-bottom:1px solid #CDCDCD;font-size:1.6em;text-align:left;"> Workflow</h2>
             <p style="line-height:140%;font-size:1.2em;text-align:left;padding-bottom:15px;">
-                B3A Biobank inherits Gaob LIMS 3's ISO 17025 compliant functionality, and adds Patients, Doctors, Clinical Cases and Referring Institutions. B3A Biobank is Free and Open Source, and can be customised to your lab's specific requirements.
+                Bika Biobank inherits Gaob LIMS 3's ISO 17025 compliant functionality, and adds Patients, Doctors, Clinical Cases and Referring Institutions. Bika Biobank is Free and Open Source, and can be customised to your lab's specific requirements.
             </p>
 
             <h2 style="margin-bottom:10px;border-bottom:1px solid #CDCDCD;font-size:1.6em;">The meaning of Naringenine</h2>
@@ -53,9 +53,9 @@
                 <li><a href="http://github.com/bikalabs/Bika-LIMS/wiki"><span class="state-published">Bika LIMS Wiki</span></a></li>
             </ul>
 
-            <h2 style="margin-bottom:10px;border-bottom:1px solid #CDCDCD;font-size:1.6em;padding-top:15px;">B3A Biobank Installation</h2>
+            <h2 style="margin-bottom:10px;border-bottom:1px solid #CDCDCD;font-size:1.6em;padding-top:15px;">Bika Biobank Installation</h2>
             <p style="line-height:140%;font-size:1.2em;">
-                B3A Biobank can be installed easily on Windows, Mac OS X, Linux, BSD and other platforms:
+                Bika Biobank can be installed easily on Windows, Mac OS X, Linux, BSD and other platforms:
             </p>
             <ul style="font-size:1.2em;margin-left:15px;">
                 <li><a href="https://github.com/bikalabs/Bika-LIMS/wiki/Bika-LIMS-Installation">Installation Guide for Bika LIMS on the GitHub Wiki.</a></li>
@@ -79,7 +79,7 @@
                 If you want to stay up to date with development, you can retrieve the source directly from the code repository for updates. It's the recommended installation method for developers and users who want to test the latest version.
             </p>
             <ul style="font-size:1.2em;margin-left:15px;">
-                <li><a href="https://github.com/rockfruit/bika.sanbi">B3A Biobank LIMS Source repository</a></li>
+                <li><a href="https://github.com/rockfruit/bika.sanbi">Bika Biobank LIMS Source repository</a></li>
                 <li><a href="https://github.com/bikalabs/bika.lims">Bika LIMS</a></li>
             </ul>
 
