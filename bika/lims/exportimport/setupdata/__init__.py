@@ -1577,6 +1577,7 @@ class Analysis_Services(WorksheetImporter):
                 ManualEntryOfResults=allowmanualentry,
                 InstrumentEntryOfResults=allowinstrentry,
                 Instruments=instruments,
+                Instrument=defaultinstrument,
                 _Calculation=_calculation,
                 UseDefaultCalculation=usedefaultcalculation,
                 DeferredCalculation=deferredcalculation,
