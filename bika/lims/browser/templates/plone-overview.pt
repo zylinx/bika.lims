@@ -39,7 +39,7 @@
                                tal:attributes="href site/absolute_url"
                                title="Go to your installation"
                                i18n:attributes="title;"
-                               i18n:translate="">View your B3A Biobank installation</a>
+                               i18n:translate="">View your Bika Biobank installation</a>
                         </span>
                         <div class="upgrade-warning"
                              tal:condition="python:view.outdated(site)">
@@ -63,7 +63,7 @@
                 <tal:many tal:condition="python:len(sites) &gt; 1">
                 <li>
                     <span id="multiple-sites" i18n:translate="">
-                        You have multiple installations of B3A Biobank:
+                        You have multiple installations of Bika Biobank:
                     </span>
                     <ul>
                         <li tal:repeat="site sites">
