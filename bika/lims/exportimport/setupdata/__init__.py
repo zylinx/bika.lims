@@ -1832,6 +1832,10 @@ class Reference_Definitions(WorksheetImporter):
                 self.results[row['ReferenceDefinition_title']] = []
             service = self.get_object(bsc, 'AnalysisService',
                                       row.get('service'))
+            if service is None:
+                raise RuntimeError(
+                    'load_reference_definition_results: service %s not found' % row.get('service'))
+
             self.results[
                 row['ReferenceDefinition_title']].append({
                     'uid': service.UID(),
