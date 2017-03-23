@@ -621,6 +621,9 @@ function AnalysisRequestAddByCol() {
             })
     }
 
+//Copy button issues with blank values:
+//sample[1478:39], Template[1730:26], AnalysisProfile[1119:34]
+
     function copybutton_selected() {
         $('img.copybutton').live('click', function () {
             var nr_ars = parseInt($('input[id="ar_count"]').val(), 10);
