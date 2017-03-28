@@ -1118,16 +1118,16 @@ function AnalysisRequestAddByCol() {
                 // We'll use this array to get the ALL profiles
                 var profiles = $("#Profiles-" + arnum);
                 if (profiles.attr()){
-                var uids_array = profiles.attr('uid').split(',');
-                template_unset(arnum);
-                for (var i = 0; i < uids_array.length; i++) {
-                    profile_set(arnum, uids_array[i])
-                        .then(function () {
-                            specification_apply();
-                            partition_indicators_set(arnum)
-                        })
-                }
-                recalc_prices(arnum);
+                  var uids_array = profiles.attr('uid').split(',');
+                  template_unset(arnum);
+                  for (var i = 0; i < uids_array.length; i++) {
+                      profile_set(arnum, uids_array[i])
+                          .then(function () {
+                              specification_apply();
+                              partition_indicators_set(arnum)
+                          })
+                  }
+                  recalc_prices(arnum);
               }
             })
             .each(function (i, e) {
@@ -1733,19 +1733,20 @@ function AnalysisRequestAddByCol() {
         var defs = []
         var expanded_categories = []
         if(!!service_data){
-        for (var si = 0; si < service_data.length; si++) {
-            // Expand category
-            var service = service_data[si]
-            services.push(service)
-            var th = $("table[form_id='" + service['PointOfCapture'] + "'] " +
-                       "th[cat='" + service['CategoryTitle'] + "']")
-            if(expanded_categories.indexOf(th) < 0) {
-                expanded_categories.push(th)
-                var def = $.Deferred()
-                def = category_header_expand_handler(th)
-                defs.push(def)
-            }
-        }}
+          for (var si = 0; si < service_data.length; si++) {
+              // Expand category
+              var service = service_data[si]
+              services.push(service)
+              var th = $("table[form_id='" + service['PointOfCapture'] + "'] " +
+                         "th[cat='" + service['CategoryTitle'] + "']")
+              if(expanded_categories.indexOf(th) < 0) {
+                  expanded_categories.push(th)
+                  var def = $.Deferred()
+                  def = category_header_expand_handler(th)
+                  defs.push(def)
+              }
+          }
+        }
         // Call $.when with all deferreds
         $.when.apply(null, defs).then(function () {
             // select services
