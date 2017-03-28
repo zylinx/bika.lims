@@ -621,9 +621,6 @@ function AnalysisRequestAddByCol() {
             })
     }
 
-//Copy button issues with blank values:
-//sample[1478:39], Template[1730:26], AnalysisProfile[1119:34]
-
     function copybutton_selected() {
         $('img.copybutton').live('click', function () {
             var nr_ars = parseInt($('input[id="ar_count"]').val(), 10);
@@ -1119,7 +1116,9 @@ function AnalysisRequestAddByCol() {
             .live('copy', function (event, item) {
                 var arnum = $(this).parents('td').attr('arnum');
                 // We'll use this array to get the ALL profiles
-                var uids_array = $("#Profiles-" + arnum).attr('uid').split(',');
+                var profiles = $("#Profiles-" + arnum);
+                if (profiles.attr()){
+                var uids_array = profiles.attr('uid').split(',');
                 template_unset(arnum);
                 for (var i = 0; i < uids_array.length; i++) {
                     profile_set(arnum, uids_array[i])
@@ -1129,6 +1128,7 @@ function AnalysisRequestAddByCol() {
                         })
                 }
                 recalc_prices(arnum);
+              }
             })
             .each(function (i, e) {
                 if ($(e).val()) {
@@ -1478,6 +1478,7 @@ function AnalysisRequestAddByCol() {
                       '_authenticator': $('input[name="_authenticator"]').val()
                   },
                   function (data) {
+                    if(!!data){
                       for (var i = 0; i < data.length; i++) {
                           var fieldname = data[i][0];
                           var fieldvalue = data[i][1];
@@ -1524,6 +1525,7 @@ function AnalysisRequestAddByCol() {
                               state_set(arnum, fieldname, fieldvalue)
                           }
                       }
+                    }
                   })
     }
 
@@ -1730,6 +1732,7 @@ function AnalysisRequestAddByCol() {
         var services = []
         var defs = []
         var expanded_categories = []
+        if(!!service_data){
         for (var si = 0; si < service_data.length; si++) {
             // Expand category
             var service = service_data[si]
@@ -1742,7 +1745,7 @@ function AnalysisRequestAddByCol() {
                 def = category_header_expand_handler(th)
                 defs.push(def)
             }
-        }
+        }}
         // Call $.when with all deferreds
         $.when.apply(null, defs).then(function () {
             // select services
