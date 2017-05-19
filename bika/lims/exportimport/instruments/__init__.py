@@ -31,6 +31,7 @@ from eltra.cs import cs2000
 from rigaku.supermini import wxrf
 from myself import myinstrument
 from nuclisens import easyq
+from shimadzu.nexera import LC2040C, LCMS8050
 
 __all__ = ['abaxis.vetscan.vs2',
            'agilent.masshunter.quantitative',
@@ -59,6 +60,8 @@ __all__ = ['abaxis.vetscan.vs2',
            'thermoscientific.multiskan.go',
            'myself.myinstrument',
            'nuclisens.easyq',
+           'shimadzu.nexera.LC2040C',
+           'shimadzu.nexera.LCMS8050',
            ]
 
 
