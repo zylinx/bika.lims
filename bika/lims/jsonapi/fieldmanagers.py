@@ -256,6 +256,28 @@ class ATFieldManager(object):
         return value or default
 
 
+class ComputedFieldManager(ATFieldManager):
+    """Adapter to get/set the value of Text Fields
+    """
+    interface.implements(IFieldManager)
+
+    def set(self, instance, value, **kw):
+        """Not applicable for Computed Fields
+        """
+        logger.warn("Setting is not allowed for computed fields")
+
+    def get(self, instance, **kw):
+        """Get the value of the field
+        """
+        # Gracefully avoid programming errors in Computed fields
+        try:
+            return self._get(instance, **kw)
+        except AttributeError:
+            logger.error("Could not get the value of the computed field '{}'"
+                         .format(self.get_field_name()))
+            return None
+
+
 class TextFieldManager(ATFieldManager):
     """Adapter to get/set the value of Text Fields
     """
@@ -415,7 +437,7 @@ class ReferenceFieldManager(ATFieldManager):
 
         # The value is a physical path
         if api.is_path(value):
-            ref = api.get_object_by_path(value)
+            ref.append(api.get_object_by_path(value))
 
         # Handle non multi valued fields
         if not self.multi_valued and len(ref) > 1:
